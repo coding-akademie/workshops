@@ -7,9 +7,7 @@ public class CinemaDoorman {
         User anton = new User(18);
         Movie movie = new Movie("Horror of the Code");
 
-        boolean userIsAllowToVisitTheMovie = isUserAllowedToVisitTheMovie(anton, movie);
-
-        if (userIsAllowToVisitTheMovie) {
+        if (isUserAllowedToVisitTheMovie(anton, movie)) {
             System.out.println(anton.getName() + " visits " + movie.getName());
         }
     }
