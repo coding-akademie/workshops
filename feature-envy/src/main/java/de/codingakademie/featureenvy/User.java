@@ -31,7 +31,6 @@ public class User {
     }
 
     public boolean canPay(Money price) {
-        // TODO Auto-generated method stub
-        return false;
+        return wallet.contains(price);
     }
 }

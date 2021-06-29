@@ -1,6 +1,7 @@
 package de.codingakademie.featureenvy;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,14 +24,12 @@ public class CinemaDoormanShould {
         assertFalse(doorman.isUserAllowedToVisitTheMovie(anton, movie));
     }
 
-    // @Test
-    // void permit_entry_if_visitor_does_have_sufficient_funds() {
-    // CinemaDoorman doorman = new CinemaDoorman();
-    // User anton = new User(18, new Money("20.00", "EUR"));
-    // Movie movie = new Movie("Horror of the Code");
-    //
-    // TODO missing logic prevents from setting this test to active
-    //
-    // assertTrue(doorman.isUserAllowedToVisitTheMovie(anton, movie));
-    // }
+    @Test
+    void permit_entry_if_visitor_does_have_sufficient_funds() {
+        CinemaDoorman doorman = new CinemaDoorman();
+        User anton = new User(18, new Money("20.00", "EUR"));
+        Movie movie = new Movie("Horror of the Code");
+
+        assertTrue(doorman.isUserAllowedToVisitTheMovie(anton, movie));
+    }
 }

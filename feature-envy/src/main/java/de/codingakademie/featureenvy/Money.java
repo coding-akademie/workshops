@@ -17,4 +17,10 @@ public class Money {
         this.value = money.value;
         this.currency = money.currency;
     }
+
+    public BigDecimal getValue() {
+        // for immutable classes: rule construct a copy of a value before returning
+        // here: since BigDecial is already immutable, returning plainly is okay.
+        return value;
+    }
 }

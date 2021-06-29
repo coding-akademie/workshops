@@ -15,4 +15,9 @@ public class Wallet {
         return 0;
     }
 
+    public boolean contains(Money price) {
+        return value.getValue()
+                    .compareTo(price.getValue()) >= 0;
+    }
+
 }
