@@ -1,11 +1,16 @@
 package de.codingakademie.featureenvy;
 
 public class User {
-    private final Wallet wallet = new Wallet();
+    private Wallet wallet = new Wallet();
     private int age;
 
     User(int age) {
         this.age = age;
+    }
+
+    User(int age, Money initialWalletFund) {
+        this.age = age;
+        this.wallet = new Wallet(initialWalletFund);
     }
 
     public int getAge() {
