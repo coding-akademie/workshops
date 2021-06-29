@@ -25,11 +25,6 @@ public class User {
         return "anton";
     }
 
-    public boolean canPay(int entryFee) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
     public boolean canPay(Money price) {
         return wallet.contains(price);
     }
