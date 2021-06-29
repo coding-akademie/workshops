@@ -17,6 +17,10 @@ public class Movie {
         return 12;
     }
 
+    public Money getEntryFeeMoney() {
+        return new Money("12.00", "EUR");
+    }
+
     public String getName() {
         return name;
     }
