@@ -16,8 +16,7 @@ public class CinemaDoorman {
     }
 
     boolean isUserAllowedToVisitTheMovie(User anton, Movie movie) {
-        if (anton.getWallet()
-                 .getAmount() >= movie.getEntryFee()) {
+        if (anton.canPay(movie.getEntryFee())) {
             if (anton.getAge() >= movie.getAgeRate()) {
                 return true;
             }

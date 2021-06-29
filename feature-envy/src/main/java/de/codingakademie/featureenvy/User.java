@@ -19,4 +19,9 @@ public class User {
     public String getName() {
         return "anton";
     }
+
+    public boolean canPay(int entryFee) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }
