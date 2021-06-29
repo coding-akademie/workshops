@@ -13,7 +13,7 @@ public class Movie {
         return minimumAge;
     }
 
-    public Money getEntryFeeMoney() {
+    public Money entryFee() {
         return new Money("12.00", "EUR");
     }
 
