@@ -10,14 +10,8 @@ public class Wallet {
         value = new Money(initialWalletFund);
     }
 
-    public int getAmount() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
     public boolean contains(Money price) {
         return value.getValue()
                     .compareTo(price.getValue()) >= 0;
     }
-
 }
