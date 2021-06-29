@@ -18,12 +18,6 @@ public class Money {
         this.currency = money.currency;
     }
 
-    public BigDecimal getValue() {
-        // for immutable classes: rule construct a copy of a value before returning
-        // here: since BigDecial is already immutable, returning plainly is okay.
-        return value;
-    }
-
     public boolean isGreaterOrEqual(Money otherMoney) {
         return value.compareTo(otherMoney.value) >= 0;
     }
