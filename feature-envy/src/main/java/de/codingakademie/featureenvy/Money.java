@@ -23,4 +23,8 @@ public class Money {
         // here: since BigDecial is already immutable, returning plainly is okay.
         return value;
     }
+
+    public boolean isGreaterOrEqual(Money otherMoney) {
+        return value.compareTo(otherMoney.value) >= 0;
+    }
 }
