@@ -10,4 +10,11 @@ public class Money {
         this.value = new BigDecimal(value);
         this.currency = currency;
     }
+
+    public Money(Money money) {
+        // for immutable classes: rule construct your own copy
+        // here: BigDecimal and String is immutable and the assignment operator creates an independent copy
+        this.value = money.value;
+        this.currency = money.currency;
+    }
 }
