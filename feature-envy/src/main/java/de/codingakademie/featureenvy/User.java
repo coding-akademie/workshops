@@ -24,4 +24,9 @@ public class User {
         // TODO Auto-generated method stub
         return false;
     }
+
+    public boolean canPay(Money price) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }
