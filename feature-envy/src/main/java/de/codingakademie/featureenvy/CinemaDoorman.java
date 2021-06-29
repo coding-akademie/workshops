@@ -8,16 +8,20 @@ public class CinemaDoorman {
         Movie movie = new Movie("Horror of the Code");
 
         boolean userIsAllowToVisitTheMovie = false;
-        if (anton.getWallet()
-                 .getAmount() >= movie.getEntryFee()) {
-            if (anton.getAge() >= movie.getAgeRate()) {
-                // userIsAllowToVisitTheMovie = true;
-                System.out.println(anton.getName() + " visits " + movie.getName());
-            }
-        }
+        userIsAllowToVisitTheMovie = isUserAllowedToVisitTheMovie(anton, movie);
 
         if (userIsAllowToVisitTheMovie) {
             System.out.println(anton.getName() + " visits " + movie.getName());
         }
+    }
+
+    public boolean isUserAllowedToVisitTheMovie(User anton, Movie movie) {
+        if (anton.getWallet()
+                 .getAmount() >= movie.getEntryFee()) {
+            if (anton.getAge() >= movie.getAgeRate()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
