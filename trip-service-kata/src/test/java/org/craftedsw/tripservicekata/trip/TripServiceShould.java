@@ -14,6 +14,8 @@ public class TripServiceShould {
     private static final User REGISTERED_USER = new User();
     private static final User ANOTHER_USER = new User();
     private static final Trip TO_BRAZIL = new Trip();
+    private static final Trip TO_LONDON = new Trip();
+
     private User loggedInUser;
 
     @Test
@@ -30,12 +32,44 @@ public class TripServiceShould {
         TripService tripService = new TestableTripService();
 
         loggedInUser = REGISTERED_USER;
-        User notFriendToRegisteredUser = new User();
-        notFriendToRegisteredUser.addFriend(ANOTHER_USER);
-        notFriendToRegisteredUser.addTrip(TO_BRAZIL);
+
+        User notFriendToRegisteredUser = UserBuilder.aUser()
+                                                    .withFriends(ANOTHER_USER)
+                                                    .withTrips(TO_BRAZIL)
+                                                    .build();
 
         List<Trip> tripList = tripService.getTripsByUser(notFriendToRegisteredUser);
         assertEquals(0, tripList.size());
+    }
+
+    public static class UserBuilder {
+        private User[] friends = new User[] {};
+        private Trip[] trips = new Trip[] {};
+
+        public static UserBuilder aUser() {
+            return new UserBuilder();
+        }
+
+        public User build() {
+            User user = new User();
+            for (User friend : friends) {
+                user.addFriend(friend);
+            }
+            for (Trip trip : trips) {
+                user.addTrip(trip);
+            }
+            return user;
+        }
+
+        public UserBuilder withTrips(Trip... trips) {
+            this.trips = trips;
+            return this;
+        }
+
+        public UserBuilder withFriends(User... friends) {
+            this.friends = friends;
+            return this;
+        }
     }
 
     private class TestableTripService extends TripService {
