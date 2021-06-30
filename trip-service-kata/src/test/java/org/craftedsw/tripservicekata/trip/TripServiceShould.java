@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class TripServiceShould {
     private static final User GUEST = null;
+    private static final User UNUSED_USER = null;
     private static final User REGISTERED_USER = new User();
     private static final User ANOTHER_USER = new User();
     private static final Trip TO_BRAZIL = new Trip();
@@ -29,7 +30,7 @@ public class TripServiceShould {
     void throw_exception_if_user_is_not_logged_in() {
         loggedInUser = GUEST;
 
-        assertThrows(UserNotLoggedInException.class, () -> tripService.getTripsByUser(null));
+        assertThrows(UserNotLoggedInException.class, () -> tripService.getTripsByUser(UNUSED_USER));
     }
 
     @Test
