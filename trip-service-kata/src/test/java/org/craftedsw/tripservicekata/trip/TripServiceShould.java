@@ -1,12 +1,23 @@
 package org.craftedsw.tripservicekata.trip;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.craftedsw.tripservicekata.exception.UserNotLoggedInException;
+import org.craftedsw.tripservicekata.user.User;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class TripServiceTest {
+public class TripServiceShould {
     @Test
-    public void you_should_code_your_tests_here() {
-        assertEquals(1, 0);
+    void throw_exception_if_user_is_not_logged_in() {
+        TripService tripService = new TestableTripService();
+
+        assertThrows(UserNotLoggedInException.class, () -> tripService.getTripsByUser(null));
+    }
+
+    private class TestableTripService extends TripService {
+        @Override
+        protected User getLoggedInUser() {
+            return null;
+        }
     }
 }
