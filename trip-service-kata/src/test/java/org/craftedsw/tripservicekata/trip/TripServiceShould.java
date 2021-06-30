@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.craftedsw.tripservicekata.exception.UserNotLoggedInException;
 import org.craftedsw.tripservicekata.user.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TripServiceShould {
@@ -17,11 +18,15 @@ public class TripServiceShould {
     private static final Trip TO_LONDON = new Trip();
 
     private User loggedInUser;
+    private TripService tripService;
+
+    @BeforeEach
+    void setUp() {
+        tripService = new TestableTripService();
+    }
 
     @Test
     void throw_exception_if_user_is_not_logged_in() {
-        TripService tripService = new TestableTripService();
-
         loggedInUser = GUEST;
 
         assertThrows(UserNotLoggedInException.class, () -> tripService.getTripsByUser(null));
@@ -29,8 +34,6 @@ public class TripServiceShould {
 
     @Test
     void not_return_any_trips_if_not_friend() {
-        TripService tripService = new TestableTripService();
-
         loggedInUser = REGISTERED_USER;
 
         User notFriendToRegisteredUser = UserBuilder.aUser()
