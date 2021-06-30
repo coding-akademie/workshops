@@ -12,3 +12,7 @@ Source: https://github.com/sandromancuso/trip-service-kata/tree/master/java/trip
 As soon as you do have a sufficient safety net in place:
 * start exploring the intent of this code and 
 * start refactoring.
+
+#### Mutation Testing
+
+	mvn clean test org.pitest:pitest-maven:mutationCoverage
