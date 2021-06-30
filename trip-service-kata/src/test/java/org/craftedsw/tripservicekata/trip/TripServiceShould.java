@@ -24,6 +24,7 @@ public class TripServiceShould {
     @BeforeEach
     void setUp() {
         tripService = new TestableTripService();
+        loggedInUser = REGISTERED_USER;
     }
 
     @Test
@@ -35,8 +36,6 @@ public class TripServiceShould {
 
     @Test
     void not_return_any_trips_if_not_friend() {
-        loggedInUser = REGISTERED_USER;
-
         User notFriendToRegisteredUser = UserBuilder.aUser()
                                                     .withFriends(ANOTHER_USER)
                                                     .withTrips(TO_BRAZIL)
@@ -48,7 +47,6 @@ public class TripServiceShould {
 
     @Test
     void return_friend_trips_when_user_are_friends() {
-        loggedInUser = REGISTERED_USER;
         User friendOfLoggedInUser = UserBuilder.aUser()
                                                .withFriends(loggedInUser)
                                                .withTrips(TO_BRAZIL, TO_LONDON)
