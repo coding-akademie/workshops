@@ -46,6 +46,19 @@ public class TripServiceShould {
         assertEquals(0, tripList.size());
     }
 
+    @Test
+    void return_friend_trips_when_user_are_friends() {
+        loggedInUser = REGISTERED_USER;
+        User friendOfLoggedInUser = UserBuilder.aUser()
+                                               .withFriends(loggedInUser)
+                                               .withTrips(TO_BRAZIL, TO_LONDON)
+                                               .build();
+
+        List<Trip> tripList = tripService.getTripsByUser(friendOfLoggedInUser);
+
+        assertEquals(2, tripList.size());
+    }
+
     public static class UserBuilder {
         private User[] friends = new User[] {};
         private Trip[] trips = new Trip[] {};
@@ -80,6 +93,11 @@ public class TripServiceShould {
         @Override
         protected User getLoggedInUser() {
             return loggedInUser;
+        }
+
+        @Override
+        protected List<Trip> tripsBy(User user) {
+            return user.trips();
         }
     }
 }
